@@ -1,6 +1,9 @@
-export type TUser = {
-  id: string;
-  email: string;
-  name: string;
-  image: string;
-};
+import { Prisma } from '@prisma/client';
+
+export type TUser = Prisma.UserGetPayload<{
+  select: {
+    id: true;
+    email: true;
+    name: true;
+  };
+}>;

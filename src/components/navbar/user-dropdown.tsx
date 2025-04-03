@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import Image from 'next/image';
 import { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
+
+import ImageWrapper from '../ui/image-wrapper';
 
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
@@ -17,7 +18,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { env } from '@/env.mjs';
-import * as m from '@/paraglide/messages';
 
 export const UserDropdown = ({ session: { user } }: { session: Session }) => {
   const [isPending, setIsPending] = useState(false);
@@ -36,21 +36,22 @@ export const UserDropdown = ({ session: { user } }: { session: Session }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Image
+        <ImageWrapper
+          errorSrc="/user.png"
           className="overflow-hidden rounded-full"
-          src={`${user?.image}`}
+          src={user?.image}
           alt={`${user?.name}`}
           width={32}
           height={32}
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{m.my_account()}</DropdownMenuLabel>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <div className="flex flex-col items-center justify-center p-2">
-          <Image
+          <ImageWrapper
             className="overflow-hidden rounded-full"
-            src={`${user?.image}`}
+            src={user?.image}
             alt={`${user?.name}`}
             width={100}
             height={100}
@@ -62,20 +63,20 @@ export const UserDropdown = ({ session: { user } }: { session: Session }) => {
             className="w-64"
           >
             {user?.isActive ? (
-              m.you_are_a_pro()
+              "You're Pro?"
             ) : (
               <>
                 {isPending && (
                   <Icons.loader className="mr-2 size-4 animate-spin" />
                 )}
-                {m.upgrade_to_pro_cta()}
+                {'Upgrade to Pro'}
               </>
             )}
           </Button>
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut()}>
-          <Icons.logOut className="mr-2 size-4" /> <span>{m.log_out()}</span>
+          <Icons.logOut className="mr-2 size-4" /> <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,5 +1,7 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
+
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -7,17 +9,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { usePathname, useRouter } from '@/lib/i18n';
-import {
-  AvailableLanguageTag,
-  availableLanguageTags,
-  languageTag,
-} from '@/paraglide/runtime';
-
-const LanguageLabel: Record<AvailableLanguageTag, string> = {
-  en: 'English',
-  pl: 'Polski',
-};
 
 export const LanguageSwitcher = () => {
   const router = useRouter();
@@ -27,19 +18,17 @@ export const LanguageSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" size="icon">
-          {languageTag().toUpperCase()}
+          En
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {availableLanguageTags.map((locale) => (
+        {['EN', 'ID'].map((locale) => (
           <DropdownMenuItem
             key={locale}
             onClick={() => {
-              router.push(pathname, { locale });
+              router.push(pathname);
             }}
-          >
-            {LanguageLabel[locale]}
-          </DropdownMenuItem>
+          ></DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

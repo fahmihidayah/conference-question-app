@@ -10,7 +10,6 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
-import * as m from '@/paraglide/messages';
 
 const formSchema = z.object({
   name: z.string().min(3),
@@ -43,7 +42,7 @@ export const HeroForm = () => {
             <FormItem>
               <FormControl>
                 <Input
-                  placeholder={m.input_placeholder()}
+                  placeholder={'Place holder'}
                   className={cn(
                     'md:w-96',
                     form.formState.errors.name && 'border-destructive'
@@ -55,7 +54,7 @@ export const HeroForm = () => {
           )}
         />
         <Button variant="secondary" type="submit">
-          {m.submit_form()}
+          Submit
         </Button>
       </form>
     </Form>
