@@ -1,12 +1,12 @@
+'use client';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
-import { auth } from '@/app/api/auth/[...nextauth]/auth-options';
 import { SignInButton } from '@/components/navbar/sign-in-button';
 import { UserDropdown } from '@/components/navbar/user-dropdown';
 
-export const Navbar = async () => {
-  const session = await auth();
-  console.log('session Navbar : ', session);
+export const Navbar = () => {
+  const session = useSession();
 
   return (
     <header className="w-full border-b">
@@ -15,7 +15,11 @@ export const Navbar = async () => {
           App
         </Link>
         <div className="flex items-center gap-2">
-          {session ? <UserDropdown session={session} /> : <SignInButton />}
+          {session.status === 'authenticated' ? (
+            <UserDropdown session={session.data} />
+          ) : (
+            <SignInButton />
+          )}
         </div>
       </div>
     </header>

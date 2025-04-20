@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 
 import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
+import { SessionProvider } from 'next-auth/react';
 
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar/navbar';
@@ -48,17 +49,19 @@ export const generateMetadata = (): Metadata => ({
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang={'en'} suppressHydrationWarning>
-      <body className={cn('min-h-screen font-sans', fonts)}>
-        <ThemeProvider attribute="class">
-          <Navbar />
-          {children}
-          <ThemeSwitcher className="absolute bottom-5 right-5 z-10" />
-          <Footer />
-          <Toaster />
-        </ThemeProvider>
-      </body>
-    </html>
+    <SessionProvider>
+      <html lang={'en'} suppressHydrationWarning>
+        <body className={cn('min-h-screen font-sans', fonts)}>
+          <ThemeProvider attribute="class">
+            <Navbar />
+            {children}
+            <ThemeSwitcher className="absolute bottom-5 right-5 z-10" />
+            <Footer />
+            <Toaster />
+          </ThemeProvider>
+        </body>
+      </html>
+    </SessionProvider>
   );
 };
 

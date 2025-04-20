@@ -14,6 +14,8 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 }) => {
   const [imgSrc, setImgSrc] = useState<string>(src as string);
 
+  if (!imgSrc) return <Image {...props} src="/user.png" alt={alt} />;
+
   return (
     <Image
       {...props}

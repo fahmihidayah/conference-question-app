@@ -40,7 +40,6 @@ export default function AuthForm() {
       router.push('/');
     }
   };
-  // const { toast } = useToast();
 
   return (
     <Form {...form}>
