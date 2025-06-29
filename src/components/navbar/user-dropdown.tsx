@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
+import Image from 'next/image';
 import { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
 
@@ -36,10 +37,9 @@ export const UserDropdown = ({ session: { user } }: { session: Session }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <ImageWrapper
-          errorSrc="/user.png"
+        <Image
           className="overflow-hidden rounded-full"
-          src={user?.image}
+          src={user?.image || '/user.png'}
           alt={`${user?.name}`}
           width={32}
           height={32}
