@@ -68,7 +68,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
-      console.log('jwt token : ', token, user);
+      console.log('auth option jwt token : ', token, user);
       if (user) {
         token.id = user.id;
         token.stripeCustomerId = user.stripeCustomerId;
@@ -78,7 +78,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       return token;
     },
     async session({ session, token, user }) {
-      console.log('session : ', session, token, user);
+      console.log('auth option session : ', session, token, user);
       if (!session.user) return session;
 
       session.user.id = token.id;
