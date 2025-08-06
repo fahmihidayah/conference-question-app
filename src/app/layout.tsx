@@ -9,9 +9,9 @@ import { Navbar } from '@/components/navbar/navbar';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { Toaster } from '@/components/ui/toaster';
-import { siteConfig } from '@/lib/constant';
-import { fonts } from '@/lib/fonts';
-import { cn } from '@/lib/utils';
+import { siteConfig } from '@/libs/constant';
+import { fonts } from '@/libs/fonts';
+import { cn } from '@/libs/utils';
 
 export const generateMetadata = (): Metadata => ({
   metadataBase: new URL(siteConfig.url()),
@@ -55,7 +55,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
           <ThemeProvider attribute="class">
             <Navbar />
             {children}
-            <ThemeSwitcher className="absolute bottom-5 right-5 z-10" />
+            <ThemeSwitcher className="fixed bottom-5 right-5 z-10" />
             <Footer />
             <Toaster />
           </ThemeProvider>

@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 import AuthForm from '../components/auth-form';
-import SignInWithGithubButton from '../components/sign-in-with-github-button';
 
 export default function AuthPageTemplate() {
   const session = useSession();
@@ -22,7 +21,8 @@ export default function AuthPageTemplate() {
     <div className="container mx-auto flex flex-col items-center py-10">
       <div className="flex w-1/2 flex-col gap-3">
         {' '}
-        <AuthForm></AuthForm> <SignInWithGithubButton></SignInWithGithubButton>
+        <AuthForm></AuthForm>
+        {/* <SignInWithGithubButton></SignInWithGithubButton> */}
       </div>
     </div>
   );

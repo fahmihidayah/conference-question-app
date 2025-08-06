@@ -61,7 +61,7 @@ export default function AuthForm() {
             <Input type="password" placeholder="Password" {...field} />
           )}
         />
-        <Button type="submit" className="w-full text-white">
+        <Button type="submit" className="w-full">
           Login
         </Button>
       </form>

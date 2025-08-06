@@ -1,33 +1,45 @@
-import { HeroForm } from '@/components/form';
-import { Icons } from '@/components/icons';
-import { Button } from '@/components/ui/button';
+'use client';
+import Link from 'next/link';
 
-const Home = () => {
+import { Button } from '@/components/ui/button';
+import { auth } from '@/libs/auth';
+
+const Home = async () => {
+  const user = await auth();
+  console.log('auth ', user);
   return (
-    <section className="container mt-10 flex flex-col items-center gap-3 text-center md:absolute md:left-1/2 md:top-1/2 md:mt-0 md:-translate-x-1/2 md:-translate-y-1/2">
-      <h1 className="mb-1 font-mono text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-        Headline
-      </h1>
-      <p className="text-muted-foreground max-w-2xl">Description</p>
-      <div className="mt-1">
-        <HeroForm />
-      </div>
-      <div className="mt-2 flex gap-4">
-        <Button asChild>
-          <a
-            href="https://github.com/Skolaczk/next-starter/blob/main/README.md#getting-started"
-            target="_blank"
-          >
-            Get Started
-          </a>
+    <main className="text-primary min-h-screen">
+      <section className="px-6 py-20 text-center">
+        <h2 className="mb-4 text-4xl font-bold">Run Q&A with ease</h2>
+        <p className="text-primary mx-auto mb-8 max-w-xl text-lg">
+          Create a conference session and allow participants to submit questions
+          without logging in.
+        </p>
+        <Button>
+          <Link href="/sign-up" className="">
+            Create Your First Conference
+          </Link>
         </Button>
-        <Button variant="outline" asChild>
-          <a href="https://github.com/Skolaczk/next-starter" target="_blank">
-            <Icons.github className="mr-2 size-4" /> Github
-          </a>
-        </Button>
-      </div>
-    </section>
+      </section>
+
+      <section className="bg-primary-foreground px-6 py-20">
+        <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2">
+          <div>
+            <h3 className="mb-4 text-2xl font-semibold">How it works</h3>
+            <ul className="text-primary list-inside list-disc space-y-4">
+              <li>🧑 Moderator signs up and creates a conference.</li>
+              <li>🔗 A unique link is shared with participants.</li>
+              <li>❓ Participants ask questions—no login needed!</li>
+              <li>✅ Moderator views and manages all questions.</li>
+            </ul>
+          </div>
+          <div className="flex h-64 w-full items-center justify-center rounded-lg bg-gray-200 text-gray-500">
+            {/* You can replace this with an actual image */}[ Image /
+            Screenshot Placeholder ]
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 

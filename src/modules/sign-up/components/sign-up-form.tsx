@@ -74,7 +74,7 @@ export default function SignUpForm() {
             <Input type="password" placeholder="Confirm Password" {...field} />
           )}
         />
-        <Button type="submit" className="w-full rounded-sm text-white">
+        <Button type="submit" className="w-full rounded-sm">
           Sign Up
         </Button>
       </form>
