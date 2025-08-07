@@ -104,7 +104,6 @@ export const authOptions: NextAuthConfig = {
       return session;
     },
   },
-  
 };
 
 export const { auth, handlers, signIn, signOut } = NextAuth(authOptions);
