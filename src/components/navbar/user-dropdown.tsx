@@ -26,6 +26,11 @@ export const UserDropdown = ({
   session: DefaultSession;
 }) => {
   const handleCreateCheckoutSession = async () => {
+    if (!env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
+      console.warn('Stripe is not configured');
+      return;
+    }
+    
     const res = await fetch('/api/stripe/checkout-session');
     const checkoutSession = await res.json().then(({ session }) => session);
     const stripe = await loadStripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);

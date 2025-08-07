@@ -93,6 +93,4 @@ export async function deleteByIdConference(id: string) {
       id: id,
     },
   });
-
-  revalidateTag('/conferences');
 }

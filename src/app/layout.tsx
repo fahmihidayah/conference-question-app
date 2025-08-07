@@ -13,39 +13,54 @@ import { siteConfig } from '@/libs/constant';
 import { fonts } from '@/libs/fonts';
 import { cn } from '@/libs/utils';
 
-export const generateMetadata = (): Metadata => ({
-  metadataBase: new URL(siteConfig.url()),
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`,
-  },
-  description: siteConfig.description,
-  keywords: siteConfig.keywords(),
-  robots: { index: true, follow: true },
-  icons: {
-    icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png',
-  },
-  verification: {
-    google: siteConfig.googleSiteVerificationId(),
-  },
-  openGraph: {
-    url: siteConfig.url(),
-    title: siteConfig.title,
+export const generateMetadata = (): Metadata => {
+  const baseUrl = siteConfig.url();
+  const metadata: Metadata = {
+    title: {
+      default: siteConfig.title,
+      template: `%s | ${siteConfig.title}`,
+    },
     description: siteConfig.description,
-    siteName: siteConfig.title,
-    images: '/opengraph-image.png',
-    type: 'website',
-    locale: 'en',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: '/opengraph-image.png',
-  },
-});
+    keywords: siteConfig.keywords(),
+    robots: { index: true, follow: true },
+    icons: {
+      icon: '/favicon/favicon.ico',
+      shortcut: '/favicon/favicon-16x16.png',
+      apple: '/favicon/apple-touch-icon.png',
+    },
+    verification: {
+      google: siteConfig.googleSiteVerificationId(),
+    },
+    openGraph: {
+      title: siteConfig.title,
+      description: siteConfig.description,
+      siteName: siteConfig.title,
+      images: '/opengraph-image.png',
+      type: 'website',
+      locale: 'en',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteConfig.title,
+      description: siteConfig.description,
+      images: '/opengraph-image.png',
+    },
+  };
+
+  // Only add metadataBase and openGraph.url if we have a valid URL
+  if (baseUrl) {
+    try {
+      metadata.metadataBase = new URL(baseUrl);
+      if (metadata.openGraph) {
+        metadata.openGraph.url = baseUrl;
+      }
+    } catch (error) {
+      console.warn('Invalid base URL for metadata:', baseUrl);
+    }
+  }
+
+  return metadata;
+};
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (

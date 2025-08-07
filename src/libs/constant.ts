@@ -15,6 +15,6 @@ export const siteConfig = {
     // m.meta_keyword_next_auth(),
     // m.meta_keyword_prisma(),
   ],
-  url: () => env.APP_URL,
+  url: () => env.APP_URL || 'http://localhost:3000',
   googleSiteVerificationId: () => env.GOOGLE_SITE_VERIFICATION_ID || '',
 };
