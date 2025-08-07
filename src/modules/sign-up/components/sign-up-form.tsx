@@ -35,7 +35,7 @@ export default function SignUpForm() {
     } else {
       router.push('/');
       toast.toast({
-        title: 'Success',
+        title: 'Berhasil',
         description: user.message,
         variant: 'default',
       });
@@ -58,7 +58,7 @@ export default function SignUpForm() {
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => <Input placeholder="Name" {...field} />}
+          render={({ field }) => <Input placeholder="Nama" {...field} />}
         />
         <FormField
           control={form.control}
@@ -71,11 +71,11 @@ export default function SignUpForm() {
           control={form.control}
           name="confirmPassword"
           render={({ field }) => (
-            <Input type="password" placeholder="Confirm Password" {...field} />
+            <Input type="password" placeholder="Konfirmasi Password" {...field} />
           )}
         />
         <Button type="submit" className="w-full rounded-sm">
-          Sign Up
+          Daftar
         </Button>
       </form>
     </Form>

@@ -62,7 +62,7 @@ export default function AuthForm() {
           )}
         />
         <Button type="submit" className="w-full">
-          Login
+          Masuk
         </Button>
       </form>
     </Form>

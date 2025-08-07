@@ -45,8 +45,8 @@ export function QuestionForm({ conferenceId, onSuccess }: QuestionFormProps) {
 
       if (result) {
         toast({
-          title: 'Success',
-          description: 'Question submitted successfully!',
+          title: 'Berhasil',
+          description: 'Pertanyaan berhasil dikirim!',
         });
 
         // Reset form
@@ -66,7 +66,7 @@ export function QuestionForm({ conferenceId, onSuccess }: QuestionFormProps) {
       } else {
         toast({
           title: 'Error',
-          description: 'Failed to submit question. Please try again.',
+          description: 'Gagal mengirim pertanyaan. Silakan coba lagi.',
           variant: 'destructive',
         });
       }
@@ -74,7 +74,7 @@ export function QuestionForm({ conferenceId, onSuccess }: QuestionFormProps) {
       console.error('Error submitting question:', error);
       toast({
         title: 'Error',
-        description: 'An unexpected error occurred. Please try again.',
+        description: 'Terjadi kesalahan yang tidak terduga. Silakan coba lagi.',
         variant: 'destructive',
       });
     } finally {
@@ -93,9 +93,9 @@ export function QuestionForm({ conferenceId, onSuccess }: QuestionFormProps) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your Name</FormLabel>
+              <FormLabel>Nama Anda</FormLabel>
               <Input
-                placeholder="Enter your name"
+                placeholder="Masukkan nama Anda"
                 {...field}
                 disabled={isSubmitting}
               />
@@ -109,9 +109,9 @@ export function QuestionForm({ conferenceId, onSuccess }: QuestionFormProps) {
           name="question"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Question</FormLabel>
+              <FormLabel>Pertanyaan</FormLabel>
               <Textarea
-                placeholder="Type your question here..."
+                placeholder="Ketik pertanyaan Anda di sini..."
                 {...field}
                 disabled={isSubmitting}
                 rows={4}
@@ -122,7 +122,7 @@ export function QuestionForm({ conferenceId, onSuccess }: QuestionFormProps) {
         />
 
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Submit Question'}
+          {isSubmitting ? 'Mengirim...' : 'Kirim Pertanyaan'}
         </Button>
       </form>
     </Form>

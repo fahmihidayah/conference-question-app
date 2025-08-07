@@ -41,14 +41,14 @@ export function ConferenceForm() {
 
       if (result) {
         toast({
-          title: 'Success',
-          description: 'Conference created successfully!',
+          title: 'Berhasil',
+          description: 'Konferensi berhasil dibuat!',
         });
         router.push('/conferences');
       } else {
         toast({
           title: 'Error',
-          description: 'Failed to create conference. Please try again.',
+          description: 'Gagal membuat konferensi. Silakan coba lagi.',
           variant: 'destructive',
         });
       }
@@ -56,7 +56,7 @@ export function ConferenceForm() {
       console.error('Error creating conference:', error);
       toast({
         title: 'Error',
-        description: 'An unexpected error occurred. Please try again.',
+        description: 'Terjadi kesalahan yang tidak terduga. Silakan coba lagi.',
         variant: 'destructive',
       });
     } finally {
@@ -75,9 +75,9 @@ export function ConferenceForm() {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Title</FormLabel>
+              <FormLabel>Judul</FormLabel>
               <Input
-                placeholder="Enter conference title"
+                placeholder="Masukkan judul konferensi"
                 {...field}
                 disabled={isSubmitting}
               />
@@ -91,9 +91,9 @@ export function ConferenceForm() {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Deskripsi</FormLabel>
               <Textarea
-                placeholder="Enter conference description"
+                placeholder="Masukkan deskripsi konferensi"
                 {...field}
                 disabled={isSubmitting}
                 rows={4}
@@ -104,7 +104,7 @@ export function ConferenceForm() {
         />
 
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Creating...' : 'Create Conference'}
+          {isSubmitting ? 'Membuat...' : 'Buat Konferensi'}
         </Button>
       </form>
     </Form>

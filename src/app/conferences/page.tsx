@@ -10,11 +10,11 @@ export default async function Page() {
   return (
     <div className="container mx-auto flex flex-col gap-2">
       <div className="flex justify-between py-5">
-        <h3>Conferences</h3>
+        <h3>Konferensi</h3>
         <Link href={'conferences/create'}>
           <Button>
             <Plus size={16}></Plus>
-            Add
+            Tambah
           </Button>
         </Link>
       </div>

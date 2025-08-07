@@ -21,14 +21,14 @@ export default function ListUserConferences({
     try {
       await navigator.clipboard.writeText(shareUrl);
       toast({
-        title: 'Link copied!',
-        description: 'Share link has been copied to clipboard',
+        title: 'Tautan disalin!',
+        description: 'Tautan berbagi telah disalin ke clipboard',
       });
     } catch (err) {
       console.error('Failed to copy share link:', err);
       toast({
-        title: 'Failed to copy',
-        description: 'Could not copy link to clipboard',
+        title: 'Gagal menyalin',
+        description: 'Tidak dapat menyalin tautan ke clipboard',
         variant: 'destructive',
       });
     }

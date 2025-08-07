@@ -24,7 +24,7 @@ export default async function CreateQuestion({ params }: Props) {
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <h1 className="text-primary mb-2 text-3xl font-bold">
-            Ask a Question
+            Ajukan Pertanyaan
           </h1>
           <p className="text-lg text-gray-600">{conference.title}</p>
         </div>
