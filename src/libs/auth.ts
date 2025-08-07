@@ -84,7 +84,6 @@ export const authOptions: NextAuthConfig = {
   session: {
     strategy: 'jwt' as const,
   },
-  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/auth',
     signOut: '/auth',
@@ -109,25 +108,7 @@ export const authOptions: NextAuthConfig = {
       return session;
     },
   },
-  events: {
-    createUser: async ({ user }: { user: User }) => {
-      if (!user.email || !user.name) return;
-
-      // await stripeServer.customers
-      //   .create({
-      //     email: user.email,
-      //     name: user.name,
-      //   })
-      //   .then(async (customer) => {
-      //     return prisma.user.update({
-      //       where: { id: user.id },
-      //       data: {
-      //         stripeCustomerId: customer.id,
-      //       },
-      //     });
-      //   });
-    },
-  },
+  
 };
 
 export const { auth, handlers, signIn, signOut } = NextAuth(authOptions);
