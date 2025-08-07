@@ -71,7 +71,11 @@ export default function SignUpForm() {
           control={form.control}
           name="confirmPassword"
           render={({ field }) => (
-            <Input type="password" placeholder="Konfirmasi Password" {...field} />
+            <Input
+              type="password"
+              placeholder="Konfirmasi Password"
+              {...field}
+            />
           )}
         />
         <Button type="submit" className="w-full rounded-sm">
