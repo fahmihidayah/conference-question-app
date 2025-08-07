@@ -55,7 +55,7 @@ export const generateMetadata = (): Metadata => {
         metadata.openGraph.url = baseUrl;
       }
     } catch (error) {
-      console.warn('Invalid base URL for metadata:', baseUrl);
+      console.warn('Invalid base URL for metadata:', baseUrl, error);
     }
   }
 

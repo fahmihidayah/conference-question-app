@@ -1,6 +1,4 @@
 'use client';
-
-import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DefaultSession } from 'next-auth';
@@ -18,27 +16,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { env } from '@/env.mjs';
 
 export const UserDropdown = ({
   session: { user },
 }: {
   session: DefaultSession;
 }) => {
-  const handleCreateCheckoutSession = async () => {
-    if (!env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
-      console.warn('Stripe is not configured');
-      return;
-    }
-    
-    const res = await fetch('/api/stripe/checkout-session');
-    const checkoutSession = await res.json().then(({ session }) => session);
-    const stripe = await loadStripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-    await stripe!.redirectToCheckout({
-      sessionId: checkoutSession.id,
-    });
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -65,10 +48,7 @@ export const UserDropdown = ({
           />
           <h2 className="py-2 text-lg font-bold">{user?.name}</h2>
           <Link href={'conferences'}>
-            <Button
-              onClick={handleCreateCheckoutSession}
-              className="text-secondary bg-primary w-64"
-            >
+            <Button className="text-secondary bg-primary w-64">
               {'Your Conferences'}
             </Button>
           </Link>

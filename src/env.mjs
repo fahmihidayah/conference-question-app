@@ -3,7 +3,12 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    DATABASE_URL: z.string().min(1).default('postgresql://localhost:5432/question-app'),
+    DATABASE_URL: z
+      .string()
+      .min(1)
+      .default(
+        'postgresql://postgres.xcmbintaeueklcrvbfez:Test@123@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres'
+      ),
     APP_URL: z.string().url().optional(),
     GOOGLE_SITE_VERIFICATION_ID: z.string().optional(),
     GITHUB_ID: z.string().optional(),
