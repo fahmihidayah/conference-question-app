@@ -17,19 +17,19 @@ export default function ListUserConferences({
 
   const handleShare = async (conferenceId: string) => {
     const shareUrl = `${window.location.origin}/conferences/${conferenceId}/questions`;
-    
+
     try {
       await navigator.clipboard.writeText(shareUrl);
       toast({
-        title: "Link copied!",
-        description: "Share link has been copied to clipboard",
+        title: 'Link copied!',
+        description: 'Share link has been copied to clipboard',
       });
     } catch (err) {
       console.error('Failed to copy share link:', err);
       toast({
-        title: "Failed to copy",
-        description: "Could not copy link to clipboard",
-        variant: "destructive",
+        title: 'Failed to copy',
+        description: 'Could not copy link to clipboard',
+        variant: 'destructive',
       });
     }
   };
@@ -54,8 +54,8 @@ export default function ListUserConferences({
               >
                 <Trash2 size={16} />
               </Button>
-              <Button 
-                size={'sm'} 
+              <Button
+                size={'sm'}
                 variant={'default'}
                 onClick={() => handleShare(e.id)}
               >
